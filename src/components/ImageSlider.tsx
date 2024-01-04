@@ -32,7 +32,7 @@ const ImageSlider = ({ imageUrls }: ImageSliderProps) => {
       <div style={{ display: 'flex', width: '100%', height: '100%', overflow: 'hidden' }}>
         {imageUrls.map((imageUrl) => (
           <img
-            key={crypto.randomUUID()}
+            key={imageUrl}
             className="img-slider-img"
             src={imageUrl}
             alt="Image"
