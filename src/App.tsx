@@ -17,6 +17,9 @@ function App() {
   return (
     <div style={{ maxWidth: '1200px', width: '100%', height: '500px', margin: '0 auto', aspectRatio: '10 / 6' }}>
       <ImageSlider images={IMAGES} />
+      <a href="/" style={{ fontSize: '4rem' }}>
+        Link
+      </a>
     </div>
   )
 }
