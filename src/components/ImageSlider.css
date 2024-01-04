@@ -18,11 +18,13 @@
   transition: background-color 100ms ease-in-out;
 }
 
-.img-slider-btn:hover {
+.img-slider-btn:hover,
+.img-slider-btn:focus-visible {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-.img-slider-btn:hover > * {
+.img-slider-btn:hover > *,
+.img-slider-btn:focus-visible > * {
   animation: squish 200ms ease-in-out;
 }
 
@@ -42,7 +44,8 @@
   transition: scale 100ms ease-in-out;
 }
 
-.img-slider-page:hover {
+.img-slider-page:hover,
+.img-slider-page:focus-visible {
   scale: 1.2;
 }
 
@@ -51,6 +54,11 @@
   height: 100%;
   stroke: white;
   fill: black;
+}
+
+.img-slider-btn:focus-visible,
+.img-slider-page:focus-visible {
+  outline: auto;
 }
 
 @keyframes squish {
