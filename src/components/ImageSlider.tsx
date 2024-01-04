@@ -29,7 +29,9 @@ const ImageSlider = ({ imageUrls }: ImageSliderProps) => {
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-      <img className="img-slider-img" src={imageUrls[imageIndex]} alt="Main image" />
+      {imageUrls.map((imageUrl) => (
+        <img key={crypto.randomUUID()} className="img-slider-img" src={imageUrl} alt="Image" />
+      ))}
       <button className="img-slider-btn" style={{ left: 0 }} onClick={showPrevImage}>
         <ArrowBigLeft />
       </button>
