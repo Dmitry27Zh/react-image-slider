@@ -29,9 +29,19 @@ const ImageSlider = ({ imageUrls }: ImageSliderProps) => {
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-      {imageUrls.map((imageUrl) => (
-        <img key={crypto.randomUUID()} className="img-slider-img" src={imageUrl} alt="Image" />
-      ))}
+      <div style={{ display: 'flex', width: '100%', height: '100%', overflow: 'hidden' }}>
+        {imageUrls.map((imageUrl) => (
+          <img
+            key={crypto.randomUUID()}
+            className="img-slider-img"
+            src={imageUrl}
+            alt="Image"
+            style={{
+              translate: `${-100 * imageIndex}%`,
+            }}
+          />
+        ))}
+      </div>
       <button className="img-slider-btn" style={{ left: 0 }} onClick={showPrevImage}>
         <ArrowBigLeft />
       </button>
