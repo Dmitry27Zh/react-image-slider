@@ -1,0 +1,27 @@
+.img-slider-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-slider-btn {
+  all: unset;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 100ms ease-in-out;
+}
+
+.img-slider-btn:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.img-slider-btn > * {
+  width: 2rem;
+  height: 2rem;
+  stroke: white;
+  fill: black;
+}

@@ -8,7 +8,11 @@ import ImageSlider from './components/ImageSlider'
 const IMAGES = [car1, car2, car3, car4, car5]
 
 function App() {
-  return <ImageSlider imageUrls={IMAGES} />
+  return (
+    <div style={{ maxWidth: '1200px', width: '100%', height: '500px', margin: '0 auto', aspectRatio: '10 / 6' }}>
+      <ImageSlider imageUrls={IMAGES} />
+    </div>
+  )
 }
 
 export default App
