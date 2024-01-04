@@ -22,9 +22,19 @@
   background-color: rgba(0, 0, 0, 0.2);
 }
 
+.img-slider-btn:hover > * {
+  animation: squish 200ms ease-in-out;
+}
+
 .img-slider-btn > * {
   width: 2rem;
   height: 2rem;
   stroke: white;
   fill: black;
+}
+
+@keyframes squish {
+  50% {
+    scale: 1.4 0.6;
+  }
 }
