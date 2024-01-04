@@ -2,16 +2,21 @@ import { useState } from 'react'
 import { ArrowBigLeft, ArrowBigRight, Circle, CircleDot } from 'lucide-react'
 import './ImageSlider.css'
 
-type ImageSliderProps = {
-  imageUrls: string[]
+type Image = {
+  url: string
+  alt: string
 }
 
-const ImageSlider = ({ imageUrls }: ImageSliderProps) => {
+type ImageSliderProps = {
+  images: Image[]
+}
+
+const ImageSlider = ({ images }: ImageSliderProps) => {
   const [imageIndex, setImageIndex] = useState(0)
   const showPrevImage = () => {
     setImageIndex((prevState) => {
       if (prevState === 0) {
-        return imageUrls.length - 1
+        return images.length - 1
       } else {
         return imageIndex - 1
       }
@@ -19,7 +24,7 @@ const ImageSlider = ({ imageUrls }: ImageSliderProps) => {
   }
   const showNextImage = () => {
     setImageIndex((prevState) => {
-      if (prevState === imageUrls.length - 1) {
+      if (prevState === images.length - 1) {
         return 0
       } else {
         return imageIndex + 1
@@ -28,25 +33,26 @@ const ImageSlider = ({ imageUrls }: ImageSliderProps) => {
   }
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+    <section aria-label="Image Slider" style={{ position: 'relative', width: '100%', height: '100%' }}>
       <div style={{ display: 'flex', width: '100%', height: '100%', overflow: 'hidden' }}>
-        {imageUrls.map((imageUrl) => (
+        {images.map((image, index) => (
           <img
-            key={imageUrl}
+            key={image.url}
             className="img-slider-img"
-            src={imageUrl}
-            alt="Image"
+            src={image.url}
+            alt={image.alt}
+            aria-hidden={index !== imageIndex}
             style={{
               translate: `${-100 * imageIndex}%`,
             }}
           />
         ))}
       </div>
-      <button className="img-slider-btn" style={{ left: 0 }} onClick={showPrevImage}>
-        <ArrowBigLeft />
+      <button className="img-slider-btn" style={{ left: 0 }} onClick={showPrevImage} aria-label="View Previous Image">
+        <ArrowBigLeft aria-hidden />
       </button>
-      <button className="img-slider-btn" style={{ right: 0 }} onClick={showNextImage}>
-        <ArrowBigRight />
+      <button className="img-slider-btn" style={{ right: 0 }} onClick={showNextImage} aria-label="View Next Image">
+        <ArrowBigRight aria-hidden />
       </button>
       <div
         style={{
@@ -58,13 +64,18 @@ const ImageSlider = ({ imageUrls }: ImageSliderProps) => {
           gap: '.25rem',
         }}
       >
-        {imageUrls.map((_, index) => (
-          <button key={crypto.randomUUID()} className="img-slider-page" onClick={() => setImageIndex(index)}>
-            {index === imageIndex ? <CircleDot /> : <Circle />}
+        {images.map((_, index) => (
+          <button
+            key={crypto.randomUUID()}
+            className="img-slider-page"
+            onClick={() => setImageIndex(index)}
+            aria-label={`View Image ${index + 1}`}
+          >
+            {index === imageIndex ? <CircleDot aria-hidden /> : <Circle aria-hidden />}
           </button>
         ))}
       </div>
-    </div>
+    </section>
   )
 }
 
