@@ -33,6 +33,26 @@
   fill: black;
 }
 
+.img-slider-page {
+  all: unset;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+  transition: scale 100ms ease-in-out;
+}
+
+.img-slider-page:hover {
+  scale: 1.2;
+}
+
+.img-slider-page > * {
+  width: 100%;
+  height: 100%;
+  stroke: white;
+  fill: black;
+}
+
 @keyframes squish {
   50% {
     scale: 1.4 0.6;

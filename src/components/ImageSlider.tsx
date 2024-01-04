@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ArrowBigLeft, ArrowBigRight } from 'lucide-react'
+import { ArrowBigLeft, ArrowBigRight, Circle, CircleDot } from 'lucide-react'
 import './ImageSlider.css'
 
 type ImageSliderProps = {
@@ -48,6 +48,22 @@ const ImageSlider = ({ imageUrls }: ImageSliderProps) => {
       <button className="img-slider-btn" style={{ right: 0 }} onClick={showNextImage}>
         <ArrowBigRight />
       </button>
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '.5rem',
+          left: '50%',
+          translate: '-50%',
+          display: 'flex',
+          gap: '.25rem',
+        }}
+      >
+        {imageUrls.map((_, index) => (
+          <button key={crypto.randomUUID()} className="img-slider-page" onClick={() => setImageIndex(index)}>
+            {index === imageIndex ? <CircleDot /> : <Circle />}
+          </button>
+        ))}
+      </div>
     </div>
   )
 }
